@@ -1,0 +1,36 @@
+html, body {
+    background-image: url('../images/forest.png');
+    background-repeat: no-repeat;
+    font-family: 'Press Start 2P', cursive;
+    margin:0px; padding:0px;
+    background-size: auto;
+    overflow:hidden;
+}
+
+body * {
+    position: absolute;
+    display: block;
+    margin:0px; padding:0px;
+    box-sizing: border-box;
+}
+
+basket {
+    width: 377px; 
+    height: 302px;
+    background-image: url('../images/basket.png');
+}
+
+apple {
+    width: 135px; 
+    height: 147px;
+    background-image: url('../images/apple.png');
+}
+
+ui {
+    font-size:80px;
+    text-shadow: 8px 8px 0px black;
+    color:white;
+    padding:20px;
+    width:100%;
+    text-align: center;
+}
