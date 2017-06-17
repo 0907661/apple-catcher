@@ -40,3 +40,10 @@ ui {
     width:100%;
     text-align: center;
 }
+
+.startButton {
+    font-size: 120px;
+    position: fixed;
+    bottom: 50%;
+    right: 40%;
+}

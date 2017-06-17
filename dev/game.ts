@@ -5,7 +5,7 @@ class Game {
     private basket: Basket;
     private border: Border;
     private apples: Array<Apple>;
-    private displayScore: Score;
+    public displayScore: Score;
     private game: Game;
     public collision: Collision;
     public updateNumber: number = 0;
@@ -34,7 +34,7 @@ class Game {
         // Executes the gameloop on every screen repaint
         requestAnimationFrame(this.gameLoop.bind(this));
     }
- 
+    
     // Pushes a new apple into the apples array and keeps track
     public pushApple(){
         if(this.apples.length < 20){
@@ -70,12 +70,6 @@ class Game {
         // Updates all the apples in the array
         for (let e of this.apples) {
             e.update();
-            /*if(e.applesOffScreen == 0){
-                this.displayScore.scoreText = "Apples caught: " + this.displayScore.score;
-            } else if(e.applesOffScreen == 1){
-                this.displayScore.scoreText = "Missed!";
-            }
-            console.log(e.applesOffScreen);*/
         }
 
         // Checks if any apple is collding with the basket

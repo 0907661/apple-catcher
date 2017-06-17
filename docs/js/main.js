@@ -215,12 +215,11 @@ var Game = (function () {
     return Game;
 }());
 window.addEventListener("load", function () {
-    new Game();
+    new StartGame();
 });
 var Score = (function () {
     function Score() {
         this.div = document.getElementsByTagName("ui")[0];
-        this.div.innerHTML = "Try to catch all 20 apples!";
         this.score = 0;
     }
     Score.prototype.updateScore = function (applesCaught) {
@@ -246,5 +245,24 @@ var Start = (function () {
         }
     };
     return Start;
+}());
+var StartGame = (function () {
+    function StartGame() {
+        this.button = document.createElement("button");
+        this.button.className = "startButton";
+        document.body.appendChild(this.button);
+        this.button.addEventListener("click", function () {
+            new Game();
+        });
+        this.score = document.getElementsByTagName("ui")[0];
+        this.score.innerHTML = "Try to catch all 20 apples!";
+        this.button.innerText = "Start game!";
+        this.buttonPosition();
+    }
+    StartGame.prototype.buttonPosition = function () {
+    };
+    StartGame.prototype.update = function () {
+    };
+    return StartGame;
 }());
 //# sourceMappingURL=main.js.map

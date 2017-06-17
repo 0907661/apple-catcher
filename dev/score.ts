@@ -1,13 +1,13 @@
 class Score{
     // Declaring and initializing variables
     public score: number;
-    private div:Element;
+    private div: Element;
+    private scoreDiv: HTMLElement;
     public scoreText: string;
     
     // Constructing the game objects
     constructor() {
         this.div = document.getElementsByTagName("ui")[0];
-        this.div.innerHTML = "Try to catch all 20 apples!"; 
         this.score = 0;
     }
     
