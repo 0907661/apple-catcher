@@ -42,6 +42,13 @@ ui {
 }
 
 .startButton {
+    background-color: #009300;
+    border: 20px solid #003B00;
+    color: white;
+    padding: 50px 150px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 120px;
     position: fixed;
     bottom: 50%;
