@@ -9,6 +9,7 @@ class Game {
     private game: Game;
     public collision: Collision;
     public updateNumber: number = 0;
+    private button: Element;
 
     public get display(): Score {
 		return this.displayScore;

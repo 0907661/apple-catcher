@@ -253,16 +253,12 @@ var StartGame = (function () {
         document.body.appendChild(this.button);
         this.button.addEventListener("click", function () {
             new Game();
+            this.remove();
         });
         this.score = document.getElementsByTagName("ui")[0];
         this.score.innerHTML = "Try to catch all 20 apples!";
         this.button.innerText = "Start game!";
-        this.buttonPosition();
     }
-    StartGame.prototype.buttonPosition = function () {
-    };
-    StartGame.prototype.update = function () {
-    };
     return StartGame;
 }());
 //# sourceMappingURL=main.js.map
