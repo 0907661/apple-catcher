@@ -25,7 +25,7 @@ class Basket extends Gameobjects {
         this.height = 302;
 
         this.x =(window.innerWidth / 2 - 175);
-        this.y =(window.innerHeight - 300);
+        this.y =(window.innerHeight - 400);
     }
 
     public update(){

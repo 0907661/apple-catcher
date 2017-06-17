@@ -4,6 +4,7 @@ class Apple extends Gameobjects{
 
     private game: Game;
     private randomSpeed: number;
+    public applesOffScreen: number = 0;
 
     // Constructing the game objects
     constructor(g: Game) {
@@ -30,26 +31,20 @@ class Apple extends Gameobjects{
     }
 
     public inBasket(){
-        // Adds 1 point to the score
-        this.game.display.updateScore(1);
-
-        // Deletes the div and stops continuous collision
+        // Stops continuous collision and deletes the div 
         this.y = -300;
         this.speed = 0;
         this.div.remove();
     }
 
+    public offScreen(){
+        // Stops continuous collision and deletes the div 
+        this.y = -300;
+        this.speed = 0;
+        this.div.remove(); 
+    }
+
     public update(){
-        // If the apple leaves the screen
-        if( this.y - 300 > window.innerHeight || this.y < -300) {
-            // 1 point will be subtracted from the score
-            // and deletes the div
-            this.y = -300;
-            this.speed = 0;
-            this.div.remove(); 
-
-        }
-
         // Sets the apple falling speed
         this.y += this.speed;
         super.update();

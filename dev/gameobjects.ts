@@ -6,7 +6,7 @@ class Gameobjects {
     public id: number = 0;
     public width: number;
     public height: number;
-    protected speed: number = 0;
+    public speed: number = 0;
     public leftSpeed: number = 0;
     public rightSpeed: number = 0;
 

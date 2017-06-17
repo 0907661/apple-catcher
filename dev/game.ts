@@ -3,10 +3,12 @@
 class Game {
     // Declaring variables
     private basket: Basket;
+    private border: Border;
     private apples: Array<Apple>;
     private displayScore: Score;
+    private game: Game;
     public collision: Collision;
-    public applesDropped: number;
+    public updateNumber: number = 0;
 
     public get display(): Score {
 		return this.displayScore;
@@ -21,6 +23,7 @@ class Game {
         this.collision = new Collision();
         this.basket = new Basket;
         this.apples = new Array<Apple>();
+        this.border = new Border();
         
         // Pushes a new apple into the apples array every 1 seconds
         setInterval( () => this.pushApple(), 1000);
@@ -33,22 +36,23 @@ class Game {
     }
  
     // Pushes a new apple into the apples array and keeps track
-    // of how many apples have been caught when the game is over
     public pushApple(){
         if(this.apples.length < 20){
-        this.apples.push(new Apple(this));
-        } else if (this.displayScore.score == 20){
-            this.displayScore.scoreText = "You've caught all the apples, well done!";
-        } else{
-            this.displayScore.scoreText = "You've managed to catch " + this.displayScore.score + " apples. Try to catch them all next time!";
-
+            this.apples.push(new Apple(this));
         }
     }
 
     // Updates the score on screen
     public updateApples(){
         if(this.apples.length < 20){
-        this.displayScore.scoreText = "Apples caught: " + this.displayScore.score;
+            this.displayScore.scoreText = "Apples caught: " + this.displayScore.score;
+        }
+        else{
+            if (this.displayScore.score == 20){
+                this.displayScore.scoreText = "You've caught all the apples, well done!";
+            } else if(this.displayScore.score !== 20){
+                this.displayScore.scoreText = "You've managed to catch " + this.displayScore.score + " apples. Try to catch them all next time!";
+            }
         }
     }
 
@@ -61,17 +65,30 @@ class Game {
     // Draws the objects
     private updateGame(){
         this.basket.update();
+        this.border.update();
+        this.display.update();
         // Updates all the apples in the array
         for (let e of this.apples) {
             e.update();
+            /*if(e.applesOffScreen == 0){
+                this.displayScore.scoreText = "Apples caught: " + this.displayScore.score;
+            } else if(e.applesOffScreen == 1){
+                this.displayScore.scoreText = "Missed!";
+            }
+            console.log(e.applesOffScreen);*/
         }
 
         // Checks if any apple is collding with the basket
         for (var b of this.apples) {
             if(this.collision.collider(b, this.basket)){
                 b.inBasket();
+                this.display.updateScore(1);
+            } else if(this.collision.borderCollide(b, this.border)){
+                b.offScreen();
             }
         }
+
+        
     }
 } 
 
