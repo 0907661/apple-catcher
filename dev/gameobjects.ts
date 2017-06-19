@@ -7,8 +7,8 @@ class Gameobjects {
     public width: number;
     public height: number;
     public speed: number = 0;
-    public leftSpeed: number = 0;
-    public rightSpeed: number = 0;
+    protected leftSpeed: number = 0;
+    protected rightSpeed: number = 0;
 
     constructor() {
     }

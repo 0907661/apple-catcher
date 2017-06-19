@@ -58,43 +58,17 @@ var Apple = (function (_super) {
 }(Gameobjects));
 var Basket = (function (_super) {
     __extends(Basket, _super);
-    function Basket() {
+    function Basket(player) {
         var _this = _super.call(this) || this;
         {
             _this.div = document.createElement("basket");
-            document.body.appendChild(_this.div);
-            _this.startPosition();
-            window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
-            window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
+            player.div.appendChild(_this.div);
+            _this.x = 380;
+            _this.y = -75;
+            _super.prototype.update.call(_this);
         }
         return _this;
     }
-    Basket.prototype.startPosition = function () {
-        this.width = 377;
-        this.height = 302;
-        this.x = (window.innerWidth / 2 - 175);
-        this.y = (window.innerHeight - 400);
-    };
-    Basket.prototype.update = function () {
-        var targetX = this.x - this.leftSpeed + this.rightSpeed;
-        if (targetX > 0 && targetX + 300 < window.innerWidth)
-            this.x = targetX;
-        _super.prototype.update.call(this);
-    };
-    Basket.prototype.onKeyDown = function (event) {
-        switch (event.keyCode) {
-            case 65:
-                this.leftSpeed = 75;
-                break;
-            case 68:
-                this.rightSpeed = 75;
-                break;
-        }
-    };
-    Basket.prototype.onKeyUp = function (event) {
-        this.leftSpeed = 0;
-        this.rightSpeed = 0;
-    };
     return Basket;
 }(Gameobjects));
 var Border = (function (_super) {
@@ -119,24 +93,6 @@ var Border = (function (_super) {
     };
     return Border;
 }(Gameobjects));
-var Bullet = (function (_super) {
-    __extends(Bullet, _super);
-    function Bullet() {
-        var _this = _super.call(this) || this;
-        {
-            _this.div = document.createElement("block");
-            document.body.appendChild(_this.div);
-            _this.xspeed = -1;
-            _this.yspeed = 1;
-        }
-        return _this;
-    }
-    Bullet.prototype.move = function () {
-        this.x += this.xspeed;
-        this.y += this.yspeed;
-    };
-    return Bullet;
-}(Basket));
 var Collision = (function () {
     function Collision() {
     }
@@ -154,7 +110,7 @@ var Game = (function () {
         this.updateNumber = 0;
         this.displayScore = new Score();
         this.collision = new Collision();
-        this.basket = new Basket;
+        this.player = new Player;
         this.apples = new Array();
         this.border = new Border();
         setInterval(function () { return _this.pushApple(); }, 1000);
@@ -194,7 +150,7 @@ var Game = (function () {
         requestAnimationFrame(this.gameLoop.bind(this));
     };
     Game.prototype.updateGame = function () {
-        this.basket.update();
+        this.player.update();
         this.border.update();
         this.display.update();
         for (var _i = 0, _a = this.apples; _i < _a.length; _i++) {
@@ -203,7 +159,7 @@ var Game = (function () {
         }
         for (var _b = 0, _c = this.apples; _b < _c.length; _b++) {
             var b = _c[_b];
-            if (this.collision.collider(b, this.basket)) {
+            if (this.collision.collider(b, this.player)) {
                 b.inBasket();
                 this.display.updateScore(1);
             }
@@ -217,6 +173,48 @@ var Game = (function () {
 window.addEventListener("load", function () {
     new StartGame();
 });
+var Player = (function (_super) {
+    __extends(Player, _super);
+    function Player() {
+        var _this = _super.call(this) || this;
+        {
+            _this.div = document.createElement("playerReflect");
+            document.body.appendChild(_this.div);
+            _this.basket = new Basket(_this);
+            _this.startPosition();
+            window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
+            window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
+        }
+        return _this;
+    }
+    Player.prototype.startPosition = function () {
+        this.width = 854;
+        this.height = 357;
+        this.x = (window.innerWidth / 2 - 175);
+        this.y = (window.innerHeight - 450);
+    };
+    Player.prototype.update = function () {
+        var targetX = this.x - this.leftSpeed + this.rightSpeed;
+        if (targetX > 0 && targetX + 300 < window.innerWidth)
+            this.x = targetX;
+        _super.prototype.update.call(this);
+    };
+    Player.prototype.onKeyDown = function (event) {
+        switch (event.keyCode) {
+            case 65:
+                this.leftSpeed = 75;
+                break;
+            case 68:
+                this.rightSpeed = 75;
+                break;
+        }
+    };
+    Player.prototype.onKeyUp = function (event) {
+        this.leftSpeed = 0;
+        this.rightSpeed = 0;
+    };
+    return Player;
+}(Gameobjects));
 var Score = (function () {
     function Score() {
         this.div = document.getElementsByTagName("ui")[0];

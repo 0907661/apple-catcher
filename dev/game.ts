@@ -2,6 +2,7 @@
 
 class Game {
     // Declaring variables
+    private player: Player;
     private basket: Basket;
     private border: Border;
     private apples: Array<Apple>;
@@ -10,6 +11,7 @@ class Game {
     public collision: Collision;
     public updateNumber: number = 0;
     private button: Element;
+    private intervalID: number;
 
     public get display(): Score {
 		return this.displayScore;
@@ -22,7 +24,7 @@ class Game {
     constructor() {
         this.displayScore = new Score();
         this.collision = new Collision();
-        this.basket = new Basket;
+        this.player = new Player;
         this.apples = new Array<Apple>();
         this.border = new Border();
         
@@ -65,7 +67,7 @@ class Game {
 
     // Draws the objects
     private updateGame(){
-        this.basket.update();
+        this.player.update();
         this.border.update();
         this.display.update();
         // Updates all the apples in the array
@@ -75,7 +77,7 @@ class Game {
 
         // Checks if any apple is collding with the basket
         for (var b of this.apples) {
-            if(this.collision.collider(b, this.basket)){
+            if(this.collision.collider(b, this.player)){
                 b.inBasket();
                 this.display.updateScore(1);
             } else if(this.collision.borderCollide(b, this.border)){

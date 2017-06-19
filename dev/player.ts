@@ -1,29 +1,19 @@
 /// <reference path="gameobjects.ts"/>
 
-class Basket extends Gameobjects {
+class Player extends Gameobjects {
 
-    constructor(player: Player){
-        super(); {
-            this.div = document.createElement("basket");
-            player.div.appendChild(this.div);
-
-            this.x = 380;
-            this.y = -75;
-
-            super.update();
-        }
-    }
-}
-
-/*class Basket extends Gameobjects {
+    private basket: Basket;
 
     // Constructing the game objects
     constructor() {
         // Using super to access parent class
         super(); {
             // Creates the basket
-            this.div = document.createElement("basket");
+            this.div = document.createElement("player");
             document.body.appendChild(this.div);
+
+            this.basket = new Basket(this);
+
             this.startPosition();
 
             // Adds the key down and up event listener
@@ -36,11 +26,11 @@ class Basket extends Gameobjects {
     private startPosition(){
         // Puts the basket in the middle of the screen
          // and initializing variables
-        this.width = 377;
-        this.height = 302;
+        this.width = 854;
+        this.height = 357;
 
         this.x =(window.innerWidth / 2 - 175);
-        this.y =(window.innerHeight - 400);
+        this.y =(window.innerHeight - 450);
     }
 
     public update(){
@@ -71,4 +61,4 @@ class Basket extends Gameobjects {
         this.rightSpeed = 0;
     }
 
-}*/
+}

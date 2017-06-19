@@ -3,7 +3,7 @@ html, body {
     background-repeat: no-repeat;
     font-family: 'Press Start 2P', cursive;
     margin:0px; padding:0px;
-    background-size: auto;
+    background-size: cover;
     overflow:hidden;
 }
 
@@ -12,6 +12,24 @@ body * {
     display: block;
     margin:0px; padding:0px;
     box-sizing: border-box;
+}
+
+player {
+    width: 854px; 
+    height: 357px;
+    background-image: url('../images/player.png');
+}
+
+playerReflect {
+    width: 854px; 
+    height: 357px;
+    background-image: url('../images/player.png');
+
+    -webkit-transform: scaleX()(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 basket {
