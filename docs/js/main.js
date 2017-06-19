@@ -84,10 +84,10 @@ var Basket = (function (_super) {
     Basket.prototype.onKeyDown = function (event) {
         switch (event.keyCode) {
             case 65:
-                this.leftSpeed = 70;
+                this.leftSpeed = 75;
                 break;
             case 68:
-                this.rightSpeed = 70;
+                this.rightSpeed = 75;
                 break;
         }
     };
