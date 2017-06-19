@@ -59,6 +59,12 @@ ui {
     text-align: center;
 }
 
+endscreen {
+    width: 2316px;
+    height: 1239px;
+    background-image: url('../images/ground.png');
+}
+
 .startButton {
     background-color: #009300;
     border: 20px solid #003B00;

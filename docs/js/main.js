@@ -108,13 +108,15 @@ var Game = (function () {
     function Game() {
         var _this = this;
         this.updateNumber = 0;
+        this.applesGone = 0;
         this.displayScore = new Score();
         this.collision = new Collision();
         this.player = new Player;
         this.apples = new Array();
         this.border = new Border();
-        setInterval(function () { return _this.pushApple(); }, 1000);
-        setInterval(function () { return _this.updateApples(); }, 10);
+        this.gameOver = false;
+        setInterval(function () { return _this.pushApple(); }, 100);
+        this.appleInterval = setInterval(function () { return _this.updateApples(); }, 10);
         requestAnimationFrame(this.gameLoop.bind(this));
     }
     Object.defineProperty(Game.prototype, "display", {
@@ -137,35 +139,64 @@ var Game = (function () {
             this.displayScore.scoreText = "Apples caught: " + this.displayScore.score;
         }
         else {
-            if (this.displayScore.score == 20) {
+            if (this.displayScore.score == 20 && this.applesGone == 20) {
                 this.displayScore.scoreText = "You've caught all the apples, well done!";
+                this.endGame();
             }
-            else if (this.displayScore.score !== 20) {
-                this.displayScore.scoreText = "You've managed to catch " + this.displayScore.score + " apples. Try to catch them all next time!";
+            else if (this.displayScore.score !== 20 && this.applesGone == 20) {
+                this.endGame();
             }
         }
+    };
+    Game.prototype.restartGame = function () {
+        window.location.reload();
+    };
+    Game.prototype.endGame = function () {
+        this.gameOver = true;
+        this.player.div.remove();
+        clearInterval(this.appleInterval);
+        this.restartButton = document.createElement("startButton");
+        this.restartButton.className = "startButton";
+        this.restartButton.innerText = "Restart";
+        document.body.appendChild(this.restartButton);
+        this.displayScore.scoreText = "You've managed to catch " + this.displayScore.score + " apples. Try to catch them all next time!";
+    };
+    Game.prototype.delay = function () {
+        setTimeout(function () { return true; }, 3000);
     };
     Game.prototype.gameLoop = function () {
         this.updateGame();
         requestAnimationFrame(this.gameLoop.bind(this));
     };
     Game.prototype.updateGame = function () {
-        this.player.update();
-        this.border.update();
-        this.display.update();
-        for (var _i = 0, _a = this.apples; _i < _a.length; _i++) {
-            var e = _a[_i];
-            e.update();
+        var _this = this;
+        if (this.gameOver == false) {
+            this.player.update();
+            this.border.update();
+            this.display.update();
+            for (var _i = 0, _a = this.apples; _i < _a.length; _i++) {
+                var e = _a[_i];
+                e.update();
+            }
+            for (var _b = 0, _c = this.apples; _b < _c.length; _b++) {
+                var b = _c[_b];
+                if (this.collision.collider(b, this.player)) {
+                    b.inBasket();
+                    this.applesGone++;
+                    this.display.updateScore(1);
+                }
+                else if (this.collision.borderCollide(b, this.border)) {
+                    b.offScreen();
+                    this.applesGone++;
+                }
+            }
         }
-        for (var _b = 0, _c = this.apples; _b < _c.length; _b++) {
-            var b = _c[_b];
-            if (this.collision.collider(b, this.player)) {
-                b.inBasket();
-                this.display.updateScore(1);
+        else {
+            for (var _d = 0, _e = this.apples; _d < _e.length; _d++) {
+                var e = _e[_d];
+                e.update();
             }
-            else if (this.collision.borderCollide(b, this.border)) {
-                b.offScreen();
-            }
+            setInterval(function () { return _this.display.update(); }, 1000);
         }
     };
     return Game;
@@ -178,7 +209,7 @@ var Player = (function (_super) {
     function Player() {
         var _this = _super.call(this) || this;
         {
-            _this.div = document.createElement("playerReflect");
+            _this.div = document.createElement("player");
             document.body.appendChild(_this.div);
             _this.basket = new Basket(_this);
             _this.startPosition();
