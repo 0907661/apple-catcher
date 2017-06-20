@@ -10,6 +10,7 @@ class Player extends Gameobjects {
         super(); {
             // Creates the basket
             this.div = document.createElement("player");
+            this.div.className = "flipped";
             document.body.appendChild(this.div);
 
             this.basket = new Basket(this);
@@ -49,6 +50,7 @@ class Player extends Gameobjects {
                 this.leftSpeed = 75;
                 break;
             case 68:
+                
                 this.rightSpeed = 75;
                 break;
         }

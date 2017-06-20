@@ -34,7 +34,7 @@ class Game {
         this.gameOver = false;
         
         // Pushes a new apple into the apples array every 1 seconds
-        setInterval( () => this.pushApple(), 100);
+        setInterval( () => this.pushApple(), 1000);
         
         // Updates the score on screen every 0.01 seconds
         this.appleInterval = setInterval(() => this.updateApples(), 10);
@@ -56,32 +56,36 @@ class Game {
             this.displayScore.scoreText = "Apples caught: " + this.displayScore.score;
         }
         else{
+            // When all apples have disappeared and the player's got a perfect score
+            // it will be displayed in the screen
             if (this.displayScore.score == 20 && this.applesGone == 20){   
                 this.displayScore.scoreText = "You've caught all the apples, well done!";
                 this.endGame();
+            // When all apples have disappeared and the player doesn't have a perfect score
+            // it will be displayed in the screen
             } else if(this.displayScore.score !== 20 && this.applesGone == 20){
                 this.endGame();
             }
         }
     }
 
-    private restartGame(){
-        window.location.reload();
-    }
-
+    // Removes the player and adds a restart button to create an end screen
     private endGame(){
         this.gameOver = true;
 
-                this.player.div.remove();
-                clearInterval(this.appleInterval);
+        this.player.div.remove();
+        clearInterval(this.appleInterval);
 
-                this.restartButton = document.createElement("startButton");
-                this.restartButton.className = "startButton";
-                this.restartButton.innerText = "Restart";
-                document.body.appendChild(this.restartButton);
+        this.restartButton = document.createElement("startButton");
+        this.restartButton.className = "startButton";
+        this.restartButton.innerText = "Restart";
+        document.body.appendChild(this.restartButton);
+        this.restartButton.addEventListener("click", function() {
+            window.location.reload();
+        });
 
                 
-                this.displayScore.scoreText = "You've managed to catch " + this.displayScore.score + " apples. Try to catch them all next time!";
+        this.displayScore.scoreText = "You've managed to catch " + this.displayScore.score + " apples. Try to catch them all next time!";
     }
 
     private delay(){
@@ -99,7 +103,7 @@ class Game {
         if(this.gameOver == false){
             this.player.update();
             this.border.update();
-            this.display.update();
+            
             // Updates all the apples in the array
             for (let e of this.apples) {
                 e.update();
@@ -120,8 +124,8 @@ class Game {
             for (let e of this.apples) {
                 e.update();
             }
-            setInterval(() => this.display.update(), 1000);
         }
+        this.display.update();
     }
 } 
 

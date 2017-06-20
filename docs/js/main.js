@@ -115,7 +115,7 @@ var Game = (function () {
         this.apples = new Array();
         this.border = new Border();
         this.gameOver = false;
-        setInterval(function () { return _this.pushApple(); }, 100);
+        setInterval(function () { return _this.pushApple(); }, 1000);
         this.appleInterval = setInterval(function () { return _this.updateApples(); }, 10);
         requestAnimationFrame(this.gameLoop.bind(this));
     }
@@ -148,9 +148,6 @@ var Game = (function () {
             }
         }
     };
-    Game.prototype.restartGame = function () {
-        window.location.reload();
-    };
     Game.prototype.endGame = function () {
         this.gameOver = true;
         this.player.div.remove();
@@ -159,6 +156,9 @@ var Game = (function () {
         this.restartButton.className = "startButton";
         this.restartButton.innerText = "Restart";
         document.body.appendChild(this.restartButton);
+        this.restartButton.addEventListener("click", function () {
+            window.location.reload();
+        });
         this.displayScore.scoreText = "You've managed to catch " + this.displayScore.score + " apples. Try to catch them all next time!";
     };
     Game.prototype.delay = function () {
@@ -169,11 +169,9 @@ var Game = (function () {
         requestAnimationFrame(this.gameLoop.bind(this));
     };
     Game.prototype.updateGame = function () {
-        var _this = this;
         if (this.gameOver == false) {
             this.player.update();
             this.border.update();
-            this.display.update();
             for (var _i = 0, _a = this.apples; _i < _a.length; _i++) {
                 var e = _a[_i];
                 e.update();
@@ -196,8 +194,8 @@ var Game = (function () {
                 var e = _e[_d];
                 e.update();
             }
-            setInterval(function () { return _this.display.update(); }, 1000);
         }
+        this.display.update();
     };
     return Game;
 }());
@@ -210,6 +208,7 @@ var Player = (function (_super) {
         var _this = _super.call(this) || this;
         {
             _this.div = document.createElement("player");
+            _this.div.className = "flipped";
             document.body.appendChild(_this.div);
             _this.basket = new Basket(_this);
             _this.startPosition();

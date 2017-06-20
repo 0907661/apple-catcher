@@ -20,16 +20,12 @@ player {
     background-image: url('../images/player.png');
 }
 
-playerReflect {
-    width: 854px; 
-    height: 357px;
-    background-image: url('../images/player.png');
-
-    -webkit-transform: scaleX()(-1);
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -ms-transform: scaleX(-1);
-    transform: scaleX(-1);
+.flipped {
+  -webkit-transform:rotateY(180deg);
+  -moz-transform:rotateY(180deg);
+  -ms-transform:rotateY(180deg);
+  -o-transform:rotateY(180deg);
+  transform:rotateY(180deg);
 }
 
 basket {
