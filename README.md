@@ -16,3 +16,7 @@ The game is made in Visual Studio Code, using Typescript. I had to make a game f
 - An end screen when all the apples have dropped
 - A restart button on the end screen so you can try to improve your score
 - Using encapsulation to declare the variables
+
+## Installation
+
+To play the game you have to fork this repository and download the files. When the files have been downloaded, go to the 'docs' map and open 'index.html' to play the game. Have fun!
