@@ -17,7 +17,7 @@ body * {
 player {
     width: 854px; 
     height: 357px;
-    background-image: url('../images/player.png');
+    background-image: url('../images/player-mini.png');
 }
 
 .flipped {
@@ -31,7 +31,7 @@ player {
 basket {
     width: 377px; 
     height: 302px;
-    background-image: url('../images/basket.png');
+    background-image: url('../images/basket-mini.png');
 }
 
 apple {
