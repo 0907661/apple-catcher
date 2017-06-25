@@ -36,8 +36,8 @@ var Apple = (function (_super) {
     Apple.prototype.startPosition = function () {
         this.x = Math.random() * (window.innerWidth - 252);
         this.y = -300;
-        this.width = 135;
-        this.height = 147;
+        this.width = 23;
+        this.height = 26;
         this.speed = Math.floor(Math.random() * (50 - 30 + 1) + 30);
     };
     Apple.prototype.inBasket = function () {
@@ -63,8 +63,8 @@ var Basket = (function (_super) {
         {
             _this.div = document.createElement("basket");
             player.div.appendChild(_this.div);
-            _this.x = 380;
-            _this.y = -75;
+            _this.x = 50;
+            _this.y = -24;
             _super.prototype.update.call(_this);
         }
         return _this;
@@ -208,7 +208,6 @@ var Player = (function (_super) {
         var _this = _super.call(this) || this;
         {
             _this.div = document.createElement("player");
-            _this.div.className = "flipped";
             document.body.appendChild(_this.div);
             _this.basket = new Basket(_this);
             _this.startPosition();
@@ -218,10 +217,10 @@ var Player = (function (_super) {
         return _this;
     }
     Player.prototype.startPosition = function () {
-        this.width = 854;
-        this.height = 357;
+        this.width = 122;
+        this.height = 52;
         this.x = (window.innerWidth / 2 - 175);
-        this.y = (window.innerHeight - 450);
+        this.y = (window.innerHeight - 150);
     };
     Player.prototype.update = function () {
         var targetX = this.x - this.leftSpeed + this.rightSpeed;

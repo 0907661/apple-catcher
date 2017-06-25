@@ -7,8 +7,8 @@ class Basket extends Gameobjects {
             this.div = document.createElement("basket");
             player.div.appendChild(this.div);
 
-            this.x = 38;
-            this.y = -7,5;
+            this.x = 50;
+            this.y = -24;
 
             super.update();
         }

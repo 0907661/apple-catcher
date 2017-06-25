@@ -10,7 +10,7 @@ class Player extends Gameobjects {
         super(); {
             // Creates the basket
             this.div = document.createElement("player");
-            this.div.className = "flipped";
+            //this.div.className = "flipped";
             document.body.appendChild(this.div);
 
             this.basket = new Basket(this);
@@ -27,11 +27,11 @@ class Player extends Gameobjects {
     private startPosition(){
         // Puts the basket in the middle of the screen
          // and initializing variables
-        this.width = 854;
-        this.height = 357;
+        this.width = 122;
+        this.height = 52;
 
         this.x =(window.innerWidth / 2 - 175);
-        this.y =(window.innerHeight - 450);
+        this.y =(window.innerHeight - 150);
     }
 
     public update(){

@@ -16,7 +16,7 @@ body * {
 }
 
 player {
-    width: 122ox; 
+    width: 122px; 
     height: 52px;
     background-image: url('../images/player-mini.png');
 }

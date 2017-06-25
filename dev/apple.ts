@@ -24,8 +24,8 @@ class Apple extends Gameobjects{
         // and initializing variables
         this.x = Math.random() * (window.innerWidth-252);
         this.y = -300;
-        this.width = 135;
-        this.height = 147;
+        this.width = 23;
+        this.height = 26;
 
         this.speed = Math.floor(Math.random() * (50 - 30 + 1) + 30);
     }
