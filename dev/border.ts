@@ -19,7 +19,7 @@ class Border extends Gameobjects {
         this.height = 100;
 
         this.x = 0;
-        this.y =(window.innerHeight - 100);
+        this.y =(window.innerHeight - 200);
     }
 
     public update(){

@@ -27,7 +27,7 @@ class Apple extends Gameobjects{
         this.width = 23;
         this.height = 26;
 
-        this.speed = Math.floor(Math.random() * (50 - 30 + 1) + 30);
+        this.speed = Math.floor(Math.random() * (20 - 10 + 1) + 10);
     }
 
     public inBasket(){

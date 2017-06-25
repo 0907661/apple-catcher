@@ -47,11 +47,11 @@ class Player extends Gameobjects {
         // using the 'A' and 'D' key
         switch (event.keyCode) {
             case 65:
-                this.leftSpeed = 75;
+                this.leftSpeed = 25;
                 break;
             case 68:
                 
-                this.rightSpeed = 75;
+                this.rightSpeed = 25;
                 break;
         }
     }

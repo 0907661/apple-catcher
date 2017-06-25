@@ -38,7 +38,7 @@ var Apple = (function (_super) {
         this.y = -300;
         this.width = 23;
         this.height = 26;
-        this.speed = Math.floor(Math.random() * (50 - 30 + 1) + 30);
+        this.speed = Math.floor(Math.random() * (20 - 10 + 1) + 10);
     };
     Apple.prototype.inBasket = function () {
         this.y = -300;
@@ -86,7 +86,7 @@ var Border = (function (_super) {
         this.width = innerWidth;
         this.height = 100;
         this.x = 0;
-        this.y = (window.innerHeight - 100);
+        this.y = (window.innerHeight - 200);
     };
     Border.prototype.update = function () {
         _super.prototype.update.call(this);
@@ -231,10 +231,10 @@ var Player = (function (_super) {
     Player.prototype.onKeyDown = function (event) {
         switch (event.keyCode) {
             case 65:
-                this.leftSpeed = 75;
+                this.leftSpeed = 25;
                 break;
             case 68:
-                this.rightSpeed = 75;
+                this.rightSpeed = 25;
                 break;
         }
     };
