@@ -2,6 +2,7 @@ html, body {
     background-image: url('../images/forest.png');
     background-repeat: no-repeat;
     font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
     margin:0px; padding:0px;
     background-size: cover;
     overflow:hidden;
@@ -15,9 +16,9 @@ body * {
 }
 
 player {
-    width: 854px; 
-    height: 357px;
-    background-image: url('../images/player.png');
+    width: 122ox; 
+    height: 52px;
+    background-image: url('../images/player-mini.png');
 }
 
 .flipped {
@@ -29,15 +30,15 @@ player {
 }
 
 basket {
-    width: 377px; 
-    height: 302px;
-    background-image: url('../images/basket.png');
+    width: 69px; 
+    height: 55px;
+    background-image: url('../images/basket-mini.png');
 }
 
 apple {
-    width: 135px; 
-    height: 147px;
-    background-image: url('../images/apple.png');
+    width: 23px; 
+    height: 26px;
+    background-image: url('../images/apple-mini.png');
 }
 
 border {
@@ -63,13 +64,13 @@ endscreen {
 
 .startButton {
     background-color: #009300;
-    border: 20px solid #003B00;
+    border: 5px solid #003B00;
     color: white;
-    padding: 50px 150px;
+    padding: 10px 130x;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 120px;
+    font-size: 30px;
     position: fixed;
     bottom: 50%;
     right: 40%;
