@@ -26,4 +26,4 @@ If you want to install the game, you can fork, clone or download this repository
 
 I've places the UML below to show how all the classes relate to one another.
 
-![UML](docs/images/UML.jpeg)
+![UML](docs/images/UML.jpg)
