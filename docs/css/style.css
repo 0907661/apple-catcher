@@ -71,6 +71,6 @@ endscreen {
     display: inline-block;
     font-size: 30px;
     position: fixed;
-    bottom: 50%;
-    right: 40%;
+    bottom: 50vw;
+    right: 45vw;
 }
