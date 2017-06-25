@@ -37,7 +37,7 @@ class Player extends Gameobjects {
     public update(){
         // Only allows movement within the width of the screen
         let targetX = this.x - this.leftSpeed + this.rightSpeed;
-        if(targetX > 0 && targetX + 300 < window.innerWidth) this.x = targetX;
+        if(targetX > 0 && targetX + 122 < window.innerWidth) this.x = targetX;
                         
         super.update();
     }

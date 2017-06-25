@@ -224,7 +224,7 @@ var Player = (function (_super) {
     };
     Player.prototype.update = function () {
         var targetX = this.x - this.leftSpeed + this.rightSpeed;
-        if (targetX > 0 && targetX + 300 < window.innerWidth)
+        if (targetX > 0 && targetX + 122 < window.innerWidth)
             this.x = targetX;
         _super.prototype.update.call(this);
     };

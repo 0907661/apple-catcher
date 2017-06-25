@@ -2,7 +2,6 @@ html, body {
     background-image: url('../images/forest.png');
     background-repeat: no-repeat;
     font-family: 'Press Start 2P', cursive;
-    font-size: 30px;
     margin:0px; padding:0px;
     background-size: cover;
     overflow:hidden;
@@ -48,8 +47,8 @@ border {
 }
 
 ui {
-    font-size:80px;
-    text-shadow: 8px 8px 0px black;
+    font-size:30px;
+    text-shadow: 3px 3px 0px black;
     color:white;
     padding:20px;
     width:100%;
@@ -66,7 +65,7 @@ endscreen {
     background-color: #009300;
     border: 5px solid #003B00;
     color: white;
-    padding: 10px 130x;
+    padding: 20px 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
