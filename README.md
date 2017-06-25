@@ -19,4 +19,4 @@ The game is made in Visual Studio Code, using Typescript. I had to make a game f
 
 ## Installation
 
-To play the game you have to fork this repository and download the files. When the files have been downloaded, go to the 'docs' map and open 'index.html' to play the game. Have fun!
+To play the game, go to https://0907661.github.io/apple-catcher/. That's it!
