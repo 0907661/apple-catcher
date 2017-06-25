@@ -17,6 +17,13 @@ The game is made in Visual Studio Code, using Typescript. I had to make a game f
 - A restart button on the end screen so you can try to improve your score
 - Using encapsulation to declare the variables
 
-## Installation
+## Installation or play
 
 To play the game, go to https://0907661.github.io/apple-catcher/. That's it!
+If you want to install the game, you can fork, clone or download this repository. Place all the files in a folder where you can host the game locally with XAMPP for example. You are free to edit the game yourself, just make sure you install typescript.
+
+## UML
+
+I've places the UML below to show how all the classes relate to one another.
+
+![UML](docs/images/UML.jpeg)
