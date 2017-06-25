@@ -86,7 +86,7 @@ var Border = (function (_super) {
         this.width = innerWidth;
         this.height = 100;
         this.x = 0;
-        this.y = (window.innerHeight - 200);
+        this.y = (window.innerHeight - 50);
     };
     Border.prototype.update = function () {
         _super.prototype.update.call(this);
@@ -220,7 +220,7 @@ var Player = (function (_super) {
         this.width = 122;
         this.height = 52;
         this.x = (window.innerWidth / 2 - 175);
-        this.y = (window.innerHeight - 150);
+        this.y = (window.innerHeight - 100);
     };
     Player.prototype.update = function () {
         var targetX = this.x - this.leftSpeed + this.rightSpeed;

@@ -31,7 +31,7 @@ class Player extends Gameobjects {
         this.height = 52;
 
         this.x =(window.innerWidth / 2 - 175);
-        this.y =(window.innerHeight - 150);
+        this.y =(window.innerHeight - 100);
     }
 
     public update(){
